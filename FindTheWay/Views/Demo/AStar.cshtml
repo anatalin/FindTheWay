@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Алгоритм A*";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Алгоритм A*: минимальный путь от 0-й до последней по счету вершины</h3>
+<div id="graphic-container">
+    <div id="graphic" class="float-left"></div>
+    <div id="path-print" class="float-right"></div>
+</div>
+
+@Scripts.Render("~/bundles/d3")
+
+@section Scripts {
+    <script src="~/Scripts/customScripts/graph/calculateFunctions.js"></script>
+    <script src="~/Scripts/customScripts/graph/graphProperties.js"></script>
+    <script src="~/Scripts/customScripts/graph/graph.js"></script>
+    <script src="~/Scripts/customScripts/graph/drawer.js"></script>
+    <script src="~/Scripts/customScripts/graph/aStar.js"></script>
+    <script type="text/javascript">
+        var svg = d3.select("#graphic")
+            .append("svg")
+            .attr("height", graphicProperties.height)
+            .attr("width", graphicProperties.width);
+
+        var graph = new Graph(
+            graphicProperties.height,
+            graphicProperties.width,
+            verticesProperties.r,
+            verticesProperties.count);
+        graph.addRandomEdges(verticesProperties.count / 2);
+
+        var drawer = new Drawer(svg);
+        drawer.drawGraph(graph, true);
+
+        var aStar = new AStar(graph);
+        // start and target vertices
+        var vertexFrom = 0,
+            vertexTo = graph.vertices.length - 1;
+        var pathResult = aStar.calculate(vertexFrom, vertexTo);
+        drawer.drawPath(graph, pathResult, "red");
+
+        var html = "<p>" +vertexFrom + " -> " + vertexTo + " : ";
+        for (var i = 0; i < pathResult.length - 1; i++) {
+            html += pathResult[i] + " -> ";
+        }
+
+        if (pathResult.length > 0) {
+            html += pathResult[pathResult.length - 1];
+        }
+
+        html += "</p>";
+        $("#path-print").html(html);
+    </script>
+}
+
+

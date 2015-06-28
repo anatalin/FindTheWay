@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Нахождение минимального пути на карте";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Нахождение минимального пути на карте</h2>
+
+<div id="map"></div>
+<div>
+    <button id="calculate-path" class="btn btn-default">Рассчитать путь</button>
+</div>
+
+@Styles.Render("~/Content/leaflet")
+<script src="~/Scripts/leaflet.js"></script>
+@section Scripts {
+    <script type="text/javascript">
+        var map = L.map('map', {
+            center: [54.1708703, 45.1379474],
+            maxBounds: [
+                [54.1600, 45.1148],
+                [54.1820, 45.1822]
+            ],
+            zoom: 15,
+            minZoom: 15
+        });
+
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, { minZoom: 10, maxZoom: 20, attribution: osmAttrib });
+
+        map.setView(new L.LatLng(51.3, 0.7), 9);
+        map.addLayer(osm);
+
+        var markers = [], nodeIds = [];
+        var markerIndex = 0;
+        var markersCount = 2;
+        
+        function onMapClick(e) {
+            $.ajax({
+                url: "/Map/ApproximatePoint",
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({
+                    Latitude: e.latlng.lat,
+                    Longitude: e.latlng.lng
+                }),
+                success: function(newCoords) {
+                    if (markersCount > markers.length) {
+                        markers.push(
+                            L.marker([newCoords.Latitude, newCoords.Longitude])
+                            .addTo(map)
+                            .bindPopup((markerIndex + 1).toString()));
+                        nodeIds.push(newCoords.NodeId);
+                    } else if (markerIndex >= markersCount) {
+                        markerIndex = 0;
+                    }
+
+                    markers[markerIndex].setLatLng([newCoords.Latitude, newCoords.Longitude]).openPopup();
+                    nodeIds[markerIndex] = newCoords.NodeId;
+                    markerIndex++;
+                }
+            });
+
+        }
+
+        map.on('click', onMapClick);
+
+        $("#calculate-path").click(function () {
+            if (markers.length < 2) {
+                return;
+            }
+
+            $.ajax({
+                url: '/Map/GetPath',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify(nodeIds),
+                success: function (data) {
+                    var latLongs = data.map(function (n) {
+                        return [n.Latitude, n.Longitude];
+                    });
+
+                    L.polyline(
+                        latLongs,
+                        { color: 'red' })
+                    .addTo(map);
+                }
+            });
+        });
+    </script>
+}
+
+

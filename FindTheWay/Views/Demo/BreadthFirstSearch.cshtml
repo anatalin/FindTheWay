@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Алгоритм поиска в ширину";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Алгоритм поиска в ширину: дерево минимальных по количеству дуг путей от 0-ой вершины до остальных</h3>
+<div id="graphic-container">
+    <div id="graphic" class="float-left"></div>
+    <div id="path-print" class="float-right"></div>
+</div>
+
+@Scripts.Render("~/bundles/d3")
+
+@section Scripts {
+    <script src="~/Scripts/customScripts/graph/calculateFunctions.js"></script>
+    <script src="~/Scripts/customScripts/graph/graphProperties.js"></script>
+    <script src="~/Scripts/customScripts/graph/graph.js"></script>
+    <script src="~/Scripts/customScripts/graph/drawer.js"></script>
+    <script src="~/Scripts/customScripts/graph/breadthFirstSearch.js"></script>
+    <script type="text/javascript">
+        // drawing
+        verticesProperties.count = 8;
+
+        var svg = d3.select("#graphic")
+            .append("svg")
+            .attr("height", graphicProperties.height)
+            .attr("width", graphicProperties.width);
+
+        var graph = new Graph(
+            graphicProperties.height,
+            graphicProperties.width,
+            verticesProperties.r,
+            verticesProperties.count);
+        graph.addRandomEdges(verticesProperties.count - 3);
+
+        var drawer = new Drawer(svg);
+        drawer.drawGraph(graph, false, "black");
+        var vFrom = 0;
+        var parents = new BreadthFirstSearch(graph).calculate(vFrom);
+        console.log(parents);
+        for (var p in parents) {
+            drawer.drawEdge(
+                graph.vertices[p].x, graph.vertices[p].y,
+                graph.vertices[parents[p]].x, graph.vertices[parents[p]].y,
+                null, "red");
+        }
+
+        var html = "";
+        for (var i = 1; i < verticesProperties.count; i++) {
+            var str = "";
+            if (parents[i] !== undefined) {
+                str = i;
+                for (var v = parents[i]; v; v = parents[v]) {
+                    str = v + " -> " + str;
+                }
+                str = "0 -> " + str;
+            }
+            str = "0 -> " + i + " : " + str;
+            html += "<p>" + str + "</p>";
+        }
+
+        $("#path-print").html(html);
+    </script>
+}
+
+
