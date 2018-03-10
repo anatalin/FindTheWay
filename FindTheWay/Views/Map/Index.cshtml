@@ -16,19 +16,19 @@
 <script src="~/Scripts/leaflet.js"></script>
 @section Scripts {
     <script type="text/javascript">
-        var map = L.map('map', {
-            center: [54.1708703, 45.1379474],
-            maxBounds: [
-                [54.1600, 45.1148],
-                [54.1820, 45.1822]
-            ],
-            zoom: 15,
-            minZoom: 15
-        });
+		var map = L.map('map', {
+			center: [54.188, 45.1802],
+			maxBounds: [
+				[54.0606118, 45.0307938],
+				[54.3088228, 45.9634805]
+			],
+			zoom: 5,
+			minZoom: 15
+		});
 
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-        var osm = new L.TileLayer(osmUrl, { minZoom: 10, maxZoom: 20, attribution: osmAttrib });
+        var osm = new L.TileLayer(osmUrl, { minZoom: 5, maxZoom: 15, attribution: osmAttrib });
 
         map.setView(new L.LatLng(51.3, 0.7), 9);
         map.addLayer(osm);

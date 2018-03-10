@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FindTheWay.Common.Models
+﻿namespace FindTheWay.Common.Models
 {
-    public class CoordinatesModel
+	public class CoordinatesModel
     {
         public long? NodeId { get; set; }
 

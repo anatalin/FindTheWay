@@ -4,11 +4,10 @@ using FindTheWay.Common.Services.Impl;
 using FindTheWay.Common.Unity;
 using FindTheWay.Data;
 using Microsoft.Practices.Unity;
-using Unity.Mvc5;
 
 namespace FindTheWay.Common
 {
-    public static class UnityConfig
+	public static class UnityConfig
     {
         public static void RegisterComponents()
         {

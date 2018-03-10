@@ -1,14 +1,10 @@
 ﻿using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace FindTheWay.Common.Unity
 {
-    public class PerRequestLifetimeManager : LifetimeManager, IDisposable
+	public class PerRequestLifetimeManager : LifetimeManager, IDisposable
     {
         private const string ContainerName = "HttpContextContainer";
 

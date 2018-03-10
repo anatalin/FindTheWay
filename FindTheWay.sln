@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay", "FindTheWay\FindTheWay.csproj", "{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay.Common", "FindTheWay.Common\FindTheWay.Common.csproj", "{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay.DbInitializer", "FindTheWay.DbInitializer\FindTheWay.DbInitializer.csproj", "{809E6409-1B48-4336-9B0C-E4152BD4C0E0}"
-EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "FindTheWay.Azure", "FindTheWay.Azure\FindTheWay.Azure.ccproj", "{B0C36A6D-3BE4-4951-AC4A-FCF337F0E6DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,12 +33,11 @@ Global
 		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0C36A6D-3BE4-4951-AC4A-FCF337F0E6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0C36A6D-3BE4-4951-AC4A-FCF337F0E6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0C36A6D-3BE4-4951-AC4A-FCF337F0E6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0C36A6D-3BE4-4951-AC4A-FCF337F0E6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD96334B-179C-46E4-A3D3-DF093E22F67C}
 	EndGlobalSection
 EndGlobal
