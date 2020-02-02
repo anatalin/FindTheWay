@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FindTheWay.Common.Services;
 using FindTheWay.Common.Services.Implementation;
 using Microsoft.AspNetCore.Builder;
@@ -25,8 +21,10 @@ namespace FindTheWay.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
+
             services.AddSingleton<IMapService, MapService>();
+
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +36,7 @@ namespace FindTheWay.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error/Error");
             }
             app.UseStaticFiles();
 
@@ -50,7 +48,7 @@ namespace FindTheWay.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Map}/{action=Index}/{id?}");
             });
         }
     }

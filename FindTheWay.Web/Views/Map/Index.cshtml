@@ -25,17 +25,14 @@
         //});
 
         var map = L.map('map').setView(
-            // south
+            // south-west
             [54.17102, 45.13914],
-            // saransk
-            //[54.1896, 45.1773],
             15);
 
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
         var osm = new L.TileLayer(osmUrl, { minZoom: 5, maxZoom: 80, attribution: osmAttrib });
 
-        //map.setView(new L.LatLng(51.3, 0.7), 9);
         map.addLayer(osm);
 
         var markers = [], nodeIds = [];

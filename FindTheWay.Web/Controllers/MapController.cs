@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FindTheWay.Common.Models;
 using FindTheWay.Common.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,17 +16,15 @@ namespace FindTheWay.Web.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<CoordinatesModel> GetPath([FromBody]List<long> nodeIdsReceived)
+        public Task<IEnumerable<CoordinatesModel>> GetPathAsync([FromBody]List<long> nodeIdsReceived)
         {
-            var path = this.mapService.GetPath(nodeIdsReceived);
-
-            return path;
+            return this.mapService.GetPathAsync(nodeIdsReceived);
         }
 
         [HttpPost]
-        public CoordinatesModel ApproximatePoint([FromBody]CoordinatesModel coordsRcvd)
+        public Task<CoordinatesModel> ApproximatePointAsync([FromBody]CoordinatesModel coordsRcvd)
         {
-            return this.mapService.ApproximatePoint(coordsRcvd);
+            return this.mapService.ApproximatePointAsync(coordsRcvd);
         }
 
         [HttpGet]

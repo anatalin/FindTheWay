@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FindTheWay.Common.Models;
 
 namespace FindTheWay.Common.Services
 {
     public interface IMapService
     {
-		IEnumerable<CoordinatesModel> GetPath(List<long> nodeIds);
+        Task<IEnumerable<CoordinatesModel>> GetPathAsync(List<long> nodeIds);
 
-		CoordinatesModel ApproximatePoint(CoordinatesModel coords);
+        Task<CoordinatesModel> ApproximatePointAsync(CoordinatesModel coords);
     }
 }

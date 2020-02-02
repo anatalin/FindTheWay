@@ -2,8 +2,8 @@
 
 namespace FindTheWay.Common.Models
 {
-	public class ClosestNodeResponse
-	{
+    public class ClosestNodeResponse
+    {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
@@ -12,11 +12,5 @@ namespace FindTheWay.Common.Models
 
         [JsonProperty(PropertyName = "lon")]
         public double Lon { get; set; }
-
-        //public long NodeId { get; set; }
-
-        //public Metadata Metadata { get; set; }
-
-        //public NodeResponse Data { get; set; }
     }
 }
