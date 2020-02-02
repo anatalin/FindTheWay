@@ -1,0 +1,19 @@
+version: '3.4'
+
+services: 
+    neo4j:
+        build:
+            context: Neo4j
+            dockerfile: Dockerfile
+        ports:
+            - "7474:7474"
+            - "7473:7473"
+            - "7687:7687"
+    findtheway-web:
+        build:
+            context: .
+            dockerfile: FindTheWay.Web/Dockerfile
+        depends_on:
+            - neo4j
+        ports:
+            - "5001:80"

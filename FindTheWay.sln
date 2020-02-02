@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay", "FindTheWay\FindTheWay.csproj", "{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindTheWay.Web", "FindTheWay.Web\FindTheWay.Web.csproj", "{C5F8743A-1DD0-43FC-91B1-20AB61978399}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay.Data", "FindTheWay.Data\FindTheWay.Data.csproj", "{EC9DB05B-B918-4E43-8B8D-80F80D3D61F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindTheWay.Common", "FindTheWay.Common\FindTheWay.Common.csproj", "{2E3293E6-6D8E-4845-A2EF-6336EC27A35A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay.Common", "FindTheWay.Common\FindTheWay.Common.csproj", "{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindTheWay.DbInitializer", "FindTheWay.DbInitializer\FindTheWay.DbInitializer.csproj", "{809E6409-1B48-4336-9B0C-E4152BD4C0E0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F563745-B5E6-4A34-BDE1-C9EAD14305B8}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,27 +19,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A35A32FA-6858-4C3A-ADC6-E216B65B6AC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC9DB05B-B918-4E43-8B8D-80F80D3D61F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC9DB05B-B918-4E43-8B8D-80F80D3D61F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC9DB05B-B918-4E43-8B8D-80F80D3D61F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC9DB05B-B918-4E43-8B8D-80F80D3D61F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D4C35B3-DC5C-4829-96D1-83F9932E69C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{809E6409-1B48-4336-9B0C-E4152BD4C0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5F8743A-1DD0-43FC-91B1-20AB61978399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F8743A-1DD0-43FC-91B1-20AB61978399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F8743A-1DD0-43FC-91B1-20AB61978399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F8743A-1DD0-43FC-91B1-20AB61978399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3293E6-6D8E-4845-A2EF-6336EC27A35A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3293E6-6D8E-4845-A2EF-6336EC27A35A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3293E6-6D8E-4845-A2EF-6336EC27A35A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3293E6-6D8E-4845-A2EF-6336EC27A35A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AD96334B-179C-46E4-A3D3-DF093E22F67C}
+		SolutionGuid = {68074EDD-0BF3-4091-B53E-2D72FBBB6F63}
 	EndGlobalSection
 EndGlobal

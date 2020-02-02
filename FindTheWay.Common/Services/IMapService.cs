@@ -1,17 +1,12 @@
-﻿using FindTheWay.Common.Models;
-using FindTheWay.Data.DbModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FindTheWay.Common.Models;
 
 namespace FindTheWay.Common.Services
 {
     public interface IMapService
     {
-        IList<Node> GetPath(List<long> nodeIds);
+		IEnumerable<CoordinatesModel> GetPath(List<long> nodeIds);
 
-        CoordinatesModel ApproximatePoint(CoordinatesModel coords);
+		CoordinatesModel ApproximatePoint(CoordinatesModel coords);
     }
 }
